@@ -16,8 +16,11 @@ public class createene : MonoBehaviour
         gameObjects[1].transform.position = new Vector3(2.47f, 3.17f, 0);
 
 
-        //gameObjects[2] = Instantiate<GameObject>(games[2]);
-        //gameObjects[2].transform.position = new Vector3(2.47f, 3.17f, 0);
+        gameObjects[2] = Instantiate<GameObject>(games[2]);
+        gameObjects[2].transform.position = new Vector3(2.47f, 3.17f, 0);
+
+        gameObjects[3] = Instantiate<GameObject>(games[3]);
+        gameObjects[3].transform.position = new Vector3(2.47f, 3.17f, 0);
     }
 
     // Update is called once per frame

@@ -87,4 +87,56 @@ public class LevelGenerator : MonoBehaviour
     {
         
     }
+
+    public Vector3 getPosition(Vector3 vector)
+    {
+        for(int i = 0; i < 15; ++i)
+        {
+            for(int j = 0; j < 14; ++j)
+            {
+                if(vector.x>=(float)(-3.5f+0.5*j-0.25f)&&vector.x<=(float)(-3.5f+0.5*j+0.25f)
+                    && vector.y >= (float)(3.75 - 0.5 * i - 0.25f) && vector.y <= (float)(3.75f - 0.5 * i + 0.25f))
+                {
+                    return new Vector3(i,j,0);
+                }
+            }
+        }
+
+        return new Vector3(0,0,0);
+
+    }
+
+    public List<int> getLORR(Vector3 vector3)
+    {
+        Vector3 vector31 = new Vector3(0, 0, 0);
+        vector31 = getPosition(vector3);
+        List<int> ss = new List<int>();
+
+        if (levelMap[(int)(vector31.x), (int)(vector31.y-1)] == 5||
+            levelMap[(int)(vector31.x), (int)(vector31.y - 1)] == 0)
+        {
+            ss.Add(0);
+            //return 0;
+        }
+        if(levelMap[(int)(vector31.x), (int)(vector31.y + 1)] == 5 ||
+            levelMap[(int)(vector31.x), (int)(vector31.y + 1)] == 0)
+        {
+            //return 1;
+            ss.Add(1);
+        }
+        if (levelMap[(int)(vector31.x-1), (int)(vector31.y)] == 5 ||
+           levelMap[(int)(vector31.x-1), (int)(vector31.y)] == 0)
+        {
+            ss.Add(2);
+            //return 2;
+        }
+        if (levelMap[(int)(vector31.x+1), (int)(vector31.y )] == 5 ||
+           levelMap[(int)(vector31.x+1), (int)(vector31.y)] == 0)
+        {
+            ss.Add(3);
+            //return 3;
+        }
+
+        return ss;
+    }
 }
