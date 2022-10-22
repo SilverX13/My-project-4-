@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1416787570021971848}
   m_Layer: 0
   m_Name: ene
-  m_TagString: Untagged
+  m_TagString: evolve
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

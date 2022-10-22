@@ -21,21 +21,24 @@ public class ene : MonoBehaviour
             case 0:
                 {
                     this.transform.Translate(-speed, 0,0);//left
-                    //this.transform
+                    this.transform.GetComponent<Animator>().SetInteger("run", 2);
                 }break;
             case 1:
                 {
                     this.transform.Translate(speed, 0, 0);//right
+                    this.transform.GetComponent<Animator>().SetInteger("run", 3);
                 }
                 break;
             case 2:
                 {
                     this.transform.Translate(0, speed, 0);//top
+                    this.transform.GetComponent<Animator>().SetInteger("run", 1);
                 }
                 break;
             case 3:
                 {
                     this.transform.Translate(0, -speed, 0);//down
+                    this.transform.GetComponent<Animator>().SetInteger("run", 0);
                 }
                 break;
         }
