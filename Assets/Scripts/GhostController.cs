@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ene : MonoBehaviour
+public class GhostController : MonoBehaviour
 {
     private LevelGenerator levelGenerator;
     public float speed;
