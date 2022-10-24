@@ -110,6 +110,7 @@ public class LevelGenerator : MonoBehaviour
     {
         Vector3 vector31 = new Vector3(0, 0, 0);
         vector31 = getPosition(vector3);
+        Debug.Log("vec:" + vector31);
         List<int> ss = new List<int>();
 
         if (levelMap[(int)(vector31.x), (int)(vector31.y-1)] == 5||
@@ -118,11 +119,15 @@ public class LevelGenerator : MonoBehaviour
             ss.Add(0);
             //return 0;
         }
-        if(levelMap[(int)(vector31.x), (int)(vector31.y + 1)] == 5 ||
-            levelMap[(int)(vector31.x), (int)(vector31.y + 1)] == 0)
+        if(((int)(vector31.y+1)<14))
         {
-            //return 1;
-            ss.Add(1);
+            if((levelMap[(int)(vector31.x), (int)(vector31.y + 1)] == 5 ||
+            levelMap[(int)(vector31.x), (int)(vector31.y + 1)] == 0))
+            {
+                //return 1;
+                ss.Add(1);
+            }
+            
         }
         if (levelMap[(int)(vector31.x-1), (int)(vector31.y)] == 5 ||
            levelMap[(int)(vector31.x-1), (int)(vector31.y)] == 0)
@@ -130,11 +135,15 @@ public class LevelGenerator : MonoBehaviour
             ss.Add(2);
             //return 2;
         }
-        if (levelMap[(int)(vector31.x+1), (int)(vector31.y )] == 5 ||
-           levelMap[(int)(vector31.x+1), (int)(vector31.y)] == 0)
+        if (((int)(vector31.x+1)<13))
         {
-            ss.Add(3);
-            //return 3;
+            if((levelMap[(int)(vector31.x + 1), (int)(vector31.y)] == 5 ||
+           levelMap[(int)(vector31.x + 1), (int)(vector31.y)] == 0))
+            {
+                ss.Add(3);
+                //return 3;
+            }
+
         }
 
         return ss;
