@@ -54,7 +54,7 @@ public class GhostController : MonoBehaviour
             //{
             //    Debug.Log("sss:::" + s);
             //}
-
+            //play music
         }
     }
 

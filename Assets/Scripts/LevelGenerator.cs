@@ -28,6 +28,8 @@ public class LevelGenerator : MonoBehaviour
 
     public List<Vector3> listGame;
 
+    public int fivecount = 0;
+
     void Start()
     {
         for(int i = 0; i < 15; ++i)
@@ -63,6 +65,7 @@ public class LevelGenerator : MonoBehaviour
                     game.transform.position = new Vector3((float)(-3.5f + 0.5 * j), (float)(3.75f - 0.5 * i), 0);
                     game.transform.parent = GameObject.Find("back").transform;
                     listGame.Add(game.transform.position);
+                    fivecount++;
                 }
                 else if (levelMap[i, j] == 6)
                 {

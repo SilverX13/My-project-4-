@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PacStudentController: MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class PacStudentController: MonoBehaviour
     float timegame = 0;
 
     public float speed;
+
+    public GameObject playData;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,11 +67,18 @@ public class PacStudentController: MonoBehaviour
                 liver.transform.GetComponent<TextMeshProUGUI>().text = "liver:" + 0;
                 //Play death music;
                 //Slow for a few seconds and jump to the third scene
+                playdata playdata = playData.transform.GetComponent<playdata>();
+                playdata.score = score.transform.GetComponent<TextMeshProUGUI>().text;
+                playdata.gametime = gametime.transform.GetComponent<TextMeshProUGUI>().text;
+                playdata.winOrUnwin = 1;
+                DontDestroyOnLoad(playData);
+                SceneManager.LoadScene(2);
             }
             else
             {
                 liver.transform.GetComponent<TextMeshProUGUI>().text = "liver:" + livercount;
             }
+            //play music
         }
         else if (collision.collider.tag.Equals("wall"))
         {
@@ -85,6 +95,18 @@ public class PacStudentController: MonoBehaviour
             Destroy(collision.gameObject);
             scorecount++;
             score.transform.GetComponent<TextMeshProUGUI>().text = "Score:" + scorecount;
+
+            //≈–∂œ ‰”Æ
+            GameObject.Find("back").transform.GetComponent<LevelGenerator>().fivecount--;
+            if (GameObject.Find("back").transform.GetComponent<LevelGenerator>().fivecount <= 0)
+            {
+                playdata playdata = playData.transform.GetComponent<playdata>();
+                playdata.score = score.transform.GetComponent<TextMeshProUGUI>().text;
+                playdata.gametime = gametime.transform.GetComponent<TextMeshProUGUI>().text;
+                playdata.winOrUnwin = 0;
+                DontDestroyOnLoad(playData);
+                SceneManager.LoadScene(2);
+            }
 
             //play music
         }
