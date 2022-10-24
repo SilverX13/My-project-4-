@@ -25,6 +25,9 @@ public class LevelGenerator : MonoBehaviour
 
     public GameObject[] gameObjects;
     // Start is called before the first frame update
+
+    public List<Vector3> listGame;
+
     void Start()
     {
         for(int i = 0; i < 15; ++i)
@@ -59,6 +62,7 @@ public class LevelGenerator : MonoBehaviour
                     GameObject game = Instantiate<GameObject>(gameObjects[4]);
                     game.transform.position = new Vector3((float)(-3.5f + 0.5 * j), (float)(3.75f - 0.5 * i), 0);
                     game.transform.parent = GameObject.Find("back").transform;
+                    listGame.Add(game.transform.position);
                 }
                 else if (levelMap[i, j] == 6)
                 {
@@ -110,7 +114,7 @@ public class LevelGenerator : MonoBehaviour
     {
         Vector3 vector31 = new Vector3(0, 0, 0);
         vector31 = getPosition(vector3);
-        Debug.Log("vec:" + vector31);
+        //Debug.Log("vec:" + vector31);
         List<int> ss = new List<int>();
 
         if (levelMap[(int)(vector31.x), (int)(vector31.y-1)] == 5||

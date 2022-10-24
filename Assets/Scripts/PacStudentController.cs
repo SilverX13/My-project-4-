@@ -1,14 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PacStudentController: MonoBehaviour
 {
+    public GameObject score;
+    int scorecount = 0;
+
+    public GameObject liver;
+    int livercount = 3;
+
+    public GameObject gametime;
+    float timegame = 0;
+
     public float speed;
     // Start is called before the first frame update
     void Start()
     {
-        
+        InvokeRepeating("onTimeInv", 1f, 0.1f);
+        InvokeRepeating("addstrawberry", 3f, 10f);
     }
 
     // Update is called once per frame
@@ -43,19 +54,66 @@ public class PacStudentController: MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag.Equals("food"))
+        //Debug.Log("tag:" + collision.collider.tag);
+        
+        if (collision.collider.tag.Equals("enemy"))
         {
-
-        }else if (collision.collider.tag.Equals("evolve"))
-        {
-
-        }else if (collision.collider.tag.Equals("enemy"))
-        {
-
+            livercount--;
+            if (livercount <= 0)
+            {
+                liver.transform.GetComponent<TextMeshProUGUI>().text = "liver:" + 0;
+                //Play death music;
+                //Slow for a few seconds and jump to the third scene
+            }
+            else
+            {
+                liver.transform.GetComponent<TextMeshProUGUI>().text = "liver:" + livercount;
+            }
         }
         else if (collision.collider.tag.Equals("wall"))
         {
+            //play music
 
         }
     }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        //Debug.Log("tag1:" + collision.tag);
+        if (collision.tag.Equals("food"))
+        {
+            Destroy(collision.gameObject);
+            scorecount++;
+            score.transform.GetComponent<TextMeshProUGUI>().text = "Score:" + scorecount;
+
+            //play music
+        }
+        else if (collision.tag.Equals("evolve"))
+        {
+            Destroy(collision.gameObject);
+            scorecount += 10;
+            score.transform.GetComponent<TextMeshProUGUI>().text = "Score:" + scorecount;
+            //play music
+        }
+    }
+
+    public void onTimeInv()
+    {
+        timegame += 0.1f*60;
+
+        gametime.transform.GetComponent<TextMeshProUGUI>().text = "Gametime:" + (int)(timegame / 3600%3600) + ":" + (int)(timegame / 60%60) + ":" + (int)(timegame % 60);
+    }
+
+
+    public void addstrawberry()
+    {
+        int r = Random.Range(0, GameObject.Find("back").transform.GetComponent<LevelGenerator>().listGame.Count);
+        GameObject game = Instantiate<GameObject>(GameObject.Find("back").transform.GetComponent<LevelGenerator>().gameObjects[5]);
+        game.transform.position = GameObject.Find("back").transform.GetComponent<LevelGenerator>().listGame[r];
+        game.transform.parent = GameObject.Find("back").transform;
+    }
+
+
+
+
 }
