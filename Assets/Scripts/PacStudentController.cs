@@ -19,6 +19,8 @@ public class PacStudentController: MonoBehaviour
 
     public GameObject playData;
     // Start is called before the first frame update
+
+    public AudioClip[] audioClip;
     void Start()
     {
         InvokeRepeating("onTimeInv", 1f, 0.1f);
@@ -79,11 +81,12 @@ public class PacStudentController: MonoBehaviour
                 liver.transform.GetComponent<TextMeshProUGUI>().text = "liver:" + livercount;
             }
             //play music
+            this.transform.GetComponent<AudioSource>().PlayOneShot(audioClip[0]);//play dead
         }
         else if (collision.collider.tag.Equals("wall"))
         {
             //play music
-
+            this.transform.GetComponent<AudioSource>().PlayOneShot(audioClip[1]);//coll wall
         }
     }
 
@@ -96,7 +99,7 @@ public class PacStudentController: MonoBehaviour
             scorecount++;
             score.transform.GetComponent<TextMeshProUGUI>().text = "Score:" + scorecount;
 
-            //≈–∂œ ‰”Æ
+            //win or unwin
             GameObject.Find("back").transform.GetComponent<LevelGenerator>().fivecount--;
             if (GameObject.Find("back").transform.GetComponent<LevelGenerator>().fivecount <= 0)
             {
@@ -109,6 +112,7 @@ public class PacStudentController: MonoBehaviour
             }
 
             //play music
+            this.transform.GetComponent<AudioSource>().PlayOneShot(audioClip[2]);//play food
         }
         else if (collision.tag.Equals("evolve"))
         {
@@ -116,6 +120,7 @@ public class PacStudentController: MonoBehaviour
             scorecount += 10;
             score.transform.GetComponent<TextMeshProUGUI>().text = "Score:" + scorecount;
             //play music
+            this.transform.GetComponent<AudioSource>().PlayOneShot(audioClip[3]);//play evolve
         }
     }
 

@@ -7,6 +7,8 @@ public class GhostController : MonoBehaviour
     private LevelGenerator levelGenerator;
     public float speed;
     int ranges = 0;//0 left 1 right 2 up 3 down
+
+    public AudioClip[] AudioClip;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +57,7 @@ public class GhostController : MonoBehaviour
             //    Debug.Log("sss:::" + s);
             //}
             //play music
+            //this.transform.GetComponent<AudioSource>().PlayOneShot(AudioClip[0]);
         }
     }
 
