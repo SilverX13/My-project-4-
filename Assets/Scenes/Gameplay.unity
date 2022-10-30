@@ -433,7 +433,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3609003458549874627, guid: 2397f02a57d43b141922d3950dce9082, type: 3}
       propertyPath: m_Name
-      value: player
+      value: pacstudent
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects:
