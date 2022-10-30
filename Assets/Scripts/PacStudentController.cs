@@ -72,6 +72,7 @@ public class PacStudentController: MonoBehaviour
                 livercount++;
                 collision.collider.gameObject.transform.position = new Vector3(2.18f, -3.55f, 0);
                 this.transform.GetComponent<AudioSource>().PlayOneShot(audioClip[4]);
+                collision.collider.gameObject.transform.GetComponent<GhostController>().speed = 0.015f;
             }
             livercount--;
             if (livercount <= 0)
@@ -127,7 +128,7 @@ public class PacStudentController: MonoBehaviour
         else if (collision.tag.Equals("evolve"))
         {
             Destroy(collision.gameObject);
-            Invoke("fixspeed", 20f);
+            Invoke("fixspeed", 4f);
             this.transform.GetComponent<AudioSource>().PlayOneShot(audioClip[3]);//play evolve
             Ghost[0].transform.GetComponent<GhostController>().speed = 0f;
             Ghost[1].transform.GetComponent<GhostController>().speed = 0f;
