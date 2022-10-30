@@ -174,11 +174,14 @@ public class LevelGenerator : MonoBehaviour
             }
             
         }
-        if (levelMap[(int)(vector31.x-1), (int)(vector31.y)] == 5 ||
-           levelMap[(int)(vector31.x-1), (int)(vector31.y)] == 0)
+        if ((int)(vector31.x - 1)>0)
         {
-            ss.Add(2);
-            //return 2;
+            if (levelMap[(int)(vector31.x - 1), (int)(vector31.y)] == 5 ||
+           levelMap[(int)(vector31.x - 1), (int)(vector31.y)] == 0)
+            {
+                ss.Add(2);
+                //return 2;
+            }
         }
         if (((int)(vector31.x+1)<29))
         {
