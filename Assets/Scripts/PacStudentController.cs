@@ -21,10 +21,14 @@ public class PacStudentController: MonoBehaviour
     // Start is called before the first frame update
 
     public AudioClip[] audioClip;
+
+    public GameObject[] Ghost;
     void Start()
     {
         InvokeRepeating("onTimeInv", 1f, 0.1f);
         InvokeRepeating("addstrawberry", 3f, 10f);
+        InvokeRepeating("addpard", 3f, 10f);
+        
     }
 
     // Update is called once per frame
@@ -63,6 +67,12 @@ public class PacStudentController: MonoBehaviour
         
         if (collision.collider.tag.Equals("enemy"))
         {
+            if (collision.collider.gameObject.transform.GetComponent<GhostController>().speed == 0)
+            {
+                livercount++;
+                collision.collider.gameObject.transform.position = new Vector3(2.18f, -3.55f, 0);
+                this.transform.GetComponent<AudioSource>().PlayOneShot(audioClip[4]);
+            }
             livercount--;
             if (livercount <= 0)
             {
@@ -117,6 +127,16 @@ public class PacStudentController: MonoBehaviour
         else if (collision.tag.Equals("evolve"))
         {
             Destroy(collision.gameObject);
+            Invoke("fixspeed", 20f);
+            this.transform.GetComponent<AudioSource>().PlayOneShot(audioClip[3]);//play evolve
+            Ghost[0].transform.GetComponent<GhostController>().speed = 0f;
+            Ghost[1].transform.GetComponent<GhostController>().speed = 0f;
+            Ghost[2].transform.GetComponent<GhostController>().speed = 0f;
+            Ghost[3].transform.GetComponent<GhostController>().speed = 0f;
+        }
+        else if (collision.tag.Equals("food1"))
+        {
+            Destroy(collision.gameObject);
             scorecount += 10;
             score.transform.GetComponent<TextMeshProUGUI>().text = "Score:" + scorecount;
             //play music
@@ -141,6 +161,19 @@ public class PacStudentController: MonoBehaviour
     }
 
 
+    public void addpard()
+    {
+        int r = Random.Range(0, GameObject.Find("back").transform.GetComponent<LevelGenerator>().listGame.Count);
+        GameObject game = Instantiate<GameObject>(GameObject.Find("back").transform.GetComponent<LevelGenerator>().gameObjects[7]);
+        game.transform.position = GameObject.Find("back").transform.GetComponent<LevelGenerator>().listGame[r];
+        game.transform.parent = GameObject.Find("back").transform;
+    }
 
-
+    public void fixspeed()
+    {
+        Ghost[0].transform.GetComponent<GhostController>().speed = 0.015f;
+        Ghost[1].transform.GetComponent<GhostController>().speed = 0.015f;
+        Ghost[2].transform.GetComponent<GhostController>().speed = 0.015f;
+        Ghost[3].transform.GetComponent<GhostController>().speed = 0.015f;
+    }
 }
