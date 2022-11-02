@@ -73,46 +73,46 @@ public class LevelGenerator : MonoBehaviour
             {
                 if (levelMap[i, j] == 1)
                 {
-                    GameObject game = Instantiate<GameObject>(gameObjects[0]);
-                    game.transform.position = new Vector3((float)(-3.5f + 0.5 * j), (float)(3.75f - 0.5 * i), 0);
-                    game.transform.parent = GameObject.Find("back").transform;
+                    //GameObject game = Instantiate<GameObject>(gameObjects[0]);
+                    //game.transform.position = new Vector3((float)(-3.5f + 0.5 * j), (float)(3.75f - 0.5 * i), 0);
+                    //game.transform.parent = GameObject.Find("back").transform;
                 }else if (levelMap[i, j] == 2)
                 {
-                    GameObject game = Instantiate<GameObject>(gameObjects[1]);
-                    game.transform.position = new Vector3((float)(-3.5f + 0.5 * j), (float)(3.75f - 0.5 * i), 0);
-                    game.transform.parent = GameObject.Find("back").transform;
+                    //GameObject game = Instantiate<GameObject>(gameObjects[1]);
+                    //game.transform.position = new Vector3((float)(-3.5f + 0.5 * j), (float)(3.75f - 0.5 * i), 0);
+                    //game.transform.parent = GameObject.Find("back").transform;
                 }
                 else if (levelMap[i, j] == 3)
                 {
-                    GameObject game = Instantiate<GameObject>(gameObjects[2]);
-                    game.transform.position = new Vector3((float)(-3.5f + 0.5 * j), (float)(3.75f - 0.5 * i), 0);
-                    game.transform.parent = GameObject.Find("back").transform;
+                    //GameObject game = Instantiate<GameObject>(gameObjects[2]);
+                    //game.transform.position = new Vector3((float)(-3.5f + 0.5 * j), (float)(3.75f - 0.5 * i), 0);
+                    //game.transform.parent = GameObject.Find("back").transform;
                 }
                 else if (levelMap[i, j] == 4)
                 {
-                    GameObject game = Instantiate<GameObject>(gameObjects[3]);
-                    game.transform.position = new Vector3((float)(-3.5f + 0.5 * j), (float)(3.75f - 0.5 * i), 0);
-                    game.transform.parent = GameObject.Find("back").transform;
+                    //GameObject game = Instantiate<GameObject>(gameObjects[3]);
+                    //game.transform.position = new Vector3((float)(-3.5f + 0.5 * j), (float)(3.75f - 0.5 * i), 0);
+                    //game.transform.parent = GameObject.Find("back").transform;
                 }
                 else if (levelMap[i, j] == 5)
                 {
-                    GameObject game = Instantiate<GameObject>(gameObjects[4]);
-                    game.transform.position = new Vector3((float)(-3.5f + 0.5 * j), (float)(3.75f - 0.5 * i), 0);
-                    game.transform.parent = GameObject.Find("back").transform;
-                    listGame.Add(game.transform.position);
+                    //GameObject game = Instantiate<GameObject>(gameObjects[4]);
+                    //game.transform.position = new Vector3((float)(-3.5f + 0.5 * j), (float)(3.75f - 0.5 * i), 0);
+                    //game.transform.parent = GameObject.Find("back").transform;
+                    listGame.Add(new Vector3((float)(-3.5f + 0.5 * j), (float)(3.75f - 0.5 * i), 0));
                     fivecount++;
                 }
                 else if (levelMap[i, j] == 6)
                 {
-                    GameObject game = Instantiate<GameObject>(gameObjects[5]);
-                    game.transform.position = new Vector3((float)(-3.5f + 0.5 * j), (float)(3.75f - 0.5 * i), 0);
-                    game.transform.parent = GameObject.Find("back").transform;
+                    //GameObject game = Instantiate<GameObject>(gameObjects[5]);
+                    //game.transform.position = new Vector3((float)(-3.5f + 0.5 * j), (float)(3.75f - 0.5 * i), 0);
+                    //game.transform.parent = GameObject.Find("back").transform;
                 }
                 else if (levelMap[i, j] == 7)
                 {
-                    GameObject game = Instantiate<GameObject>(gameObjects[6]);
-                    game.transform.position = new Vector3((float)(-3.5f + 0.5 * j), (float)(3.75f - 0.5 * i), 0);
-                    game.transform.parent = GameObject.Find("back").transform;
+                    //GameObject game = Instantiate<GameObject>(gameObjects[6]);
+                    //game.transform.position = new Vector3((float)(-3.5f + 0.5 * j), (float)(3.75f - 0.5 * i), 0);
+                    //game.transform.parent = GameObject.Find("back").transform;
                 }
                 else if (levelMap[i, j] == 0)
                 {
